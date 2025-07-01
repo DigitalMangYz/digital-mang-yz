@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DIGITAL MANG YZ</title>
+  <style>
+    body { font-family: sans-serif; margin: 0; background: #f9f9f9; }
+    header { background: #00695c; color: white; padding: 16px; font-size: 20px; text-align: center; font-weight: bold; }
+    nav { display: flex; justify-content: space-around; position: fixed; bottom: 0; width: 100%; background: white; border-top: 1px solid #ddd; }
+    nav a { padding: 10px 0; flex: 1; text-align: center; color: #444; text-decoration: none; font-size: 14px; }
+    nav a.active { color: #00695c; font-weight: bold; }
+    .banner { width: 100%; display: block; }
+    .section-title { padding: 16px; font-size: 18px; font-weight: bold; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 16px 70px; }
+    .card { background: white; padding: 16px; text-align: center; border-radius: 8px; cursor: pointer; border: 1px solid #ddd; }
+    .card img { width: 40px; height: 40px; margin-bottom: 8px; }
+    .page { display: none; padding: 16px; }
+    .page.active { display: block; }
+    .back { color: #00695c; font-weight: bold; margin-bottom: 10px; display: inline-block; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <header>DIGITAL MANG YZ</header>
+  <img src="assets/banner.jpg" class="banner" />
+
+  <div id="home" class="page active">
+    <div class="section-title">Best Seller</div>
+    <div class="grid">
+      <div class="card" onclick="openPage('panel')"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png"/><div>panelbot</div></div>
+      <div class="card" onclick="openPage('nokos')"><img src="https://cdn-icons-png.flaticon.com/512/3022/3022255.png"/><div>Nokoswa</div></div>
+      <div class="card" onclick="openPage('noktel')"><img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png"/><div>Noktel</div></div>
+      <div class="card" onclick="openPage('partner')"><img src="https://cdn-icons-png.flaticon.com/512/847/847969.png"/><div>Partnervip</div></div>
+    </div>
+  </div>
+
+  <div id="panelbot" class="page">
+    <div class="back" onclick="openPage('home')">← Kembali</div>
+    <h3>Panel bot</h3>
+    <ul>
+      <li>RAM 1GB - Rp 1.000</li>
+      <li>RAM 2GB - Rp 2.000</li>
+      <li>RAM 3GB - Rp 3.000</li>
+      <li>RAM 4GB - Rp 4.000</li>
+      <li>RAM 5GB - Rp 5.000</li>
+      <li>PANEL UNLI - Rp 6.000</li>
+      <li>RESELLER PANEL - Rp 7.000</li>
+      <li>ADMIN PANEL - Rp 8.000</li>
+    </ul>
+    <a href="https://t.me/YanzOfficialll" target="_blank">
+  <button style="
+    background-color: #0088cc;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  ">
+    🚀 HUB OWNER
+  </button>
+</a>
+    <button onclick="alert('Hubungi @YanzOfficialll di Telegram')">Hubungi Owner</button>
+  </div>
+  
+    <div id="nokoswa" class="page active">
+    <div class="section-title">Nokos WhatsApp</div>
+    <div class="grid">
+      <div class="card" onclick="openPage('indonesia')">Nokos indo</div>
+      <div class="card" onclick="openPage('malaysia')">Nokos Malay</div>
+      <div class="card" onclick="openPage('india')">Nokos India</div>
+      <div class="card" onclick="openPage('usa')">Nokos Usa</div>
+    </div>
+  </div>
+
+<div id="Indonesia" class="page">
+    <div class="back" onclick="openPage('home')">← Kembali</div>
+    <h3>Noktel</h3>
+    <ul><li>Indonesia</li><li>USA</li><li>Malaysia</li></ul>
+  </div>
+  
+  
+  <div id="noktel" class="page">
+    <div class="back" onclick="openPage('home')">← Kembali</div>
+    <h3>Noktel</h3>
+    <ul><li>Indonesia</li><li>USA</li><li>Malaysia</li></ul>
+  </div>
+
+  <div id="partnervip" class="page">
+    <div class="back" onclick="openPage('home')">← Kembali</div>
+    <h3>Benefit Partner</h3>
+    <p>✅ GET FUNC BLANK VIP, DELAY COMBO, IOS UI, SC WA, WEB TOPUP, APK NOKOS, QRIS, dan lainnya.<br>Hubungi: <strong>@YanzOfficialll</strong></p>
+  </div>
+
+   <nav>
+    <a class="active" onclick="openPage('home')">Home</a>
+    <a onclick="openPage('partnervip')">My Team</a>
+    <a onclick="openPage('home')">Information</a>
+  </nav>
+
+  <script>
+    function openPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+</body>
+</html>
