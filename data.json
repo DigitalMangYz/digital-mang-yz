@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "id": "item_1",
+      "title": "Contoh Item 1",
+      "slug": "contoh-item-1",
+      "summary": "Ringkasan singkat item 1",
+      "content": "Konten lengkap item 1. Bisa berisi markdown or html.",
+      "createdAt": "2025-12-09T00:00:00Z"
+    }
+  ]
+}
