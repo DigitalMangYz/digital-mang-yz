@@ -1,0 +1,7 @@
+{
+  "title": "Skyzopedia API Clone",
+  "description": "API data and site settings. Edit using the Telegram admin bot.",
+  "bannerUrl": "https://api.deline.web.id/dZplKsOyvd.jpg",
+  "adminToken": "changeme_admin_token123",
+  "ownerTelegramId": 5682709174
+}
