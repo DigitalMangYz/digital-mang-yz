@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Buat Kamu 🤍</title>
+
+<style>
+:root{
+  --pink:#ff6fb1;
+  --soft:#ffd6e8;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,#ffe1ef,#fff6cc);
+  font-family:"Poppins","Comic Sans MS",sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+/* floating emoji background */
+.bg{
+  position:fixed;
+  font-size:22px;
+  opacity:.7;
+  animation:float 8s linear infinite;
+  pointer-events:none;
+}
+@keyframes float{
+  from{transform:translateY(110vh) rotate(0);opacity:0}
+  20%{opacity:1}
+  to{transform:translateY(-130vh) rotate(360deg);opacity:0}
+}
+
+/* card */
+.card{
+  width:90%;
+  max-width:720px;
+  padding:35px;
+  border-radius:30px;
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(12px);
+  box-shadow:0 30px 60px rgba(0,0,0,.18);
+  border:3px dashed #ff9acb;
+  text-align:center;
+  animation:pop .8s ease;
+  z-index:10;
+}
+@keyframes pop{
+  from{transform:scale(.7);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+h1{color:var(--pink);margin:0}
+h2{color:#ff8fb1;font-size:18px;margin-top:8px}
+
+/* progress dots */
+.dots{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin:15px 0;
+}
+.dot{
+  width:10px;height:10px;
+  border-radius:50%;
+  background:#ffd1e5;
+}
+.dot.active{background:var(--pink)}
+
+/* button */
+.btn{
+  margin-top:20px;
+  padding:15px 30px;
+  border:none;
+  border-radius:40px;
+  font-size:18px;
+  cursor:pointer;
+  color:#fff;
+  background:linear-gradient(135deg,#ff7abf,#ff4f9a);
+  box-shadow:0 15px 30px rgba(255,105,180,.45);
+}
+.btn:active{transform:scale(.92)}
+
+/* message */
+.message{
+  display:none;
+  text-align:left;
+  line-height:1.9;
+  color:#444;
+  white-space:pre-line;
+  font-size:16px;
+}
+
+/* typing cursor */
+.cursor{
+  display:inline-block;
+  width:8px;
+  background:#ff7abf;
+  animation:blink 1s infinite;
+}
+@keyframes blink{
+  50%{opacity:0}
+}
+
+/* explosion */
+.boom{
+  position:fixed;
+  font-size:26px;
+  pointer-events:none;
+  animation:explode 1s ease forwards;
+}
+@keyframes explode{
+  to{
+    transform:translate(var(--x),var(--y)) scale(.3);
+    opacity:0;
+  }
+}
+</style>
+</head>
+<body>
+
+<script>
+/* background emoji */
+const bgEmoji=["💗","🧸","✨","🌸","💕","🥰"];
+for(let i=0;i<35;i++){
+  const e=document.createElement("div");
+  e.className="bg";
+  e.innerText=bgEmoji[Math.floor(Math.random()*bgEmoji.length)];
+  e.style.left=Math.random()*100+"vw";
+  e.style.fontSize=(18+Math.random()*22)+"px";
+  e.style.animationDuration=(6+Math.random()*6)+"s";
+  document.body.appendChild(e);
+}
+</script>
+
+<!-- STEP 1 -->
+<div class="card" id="s1">
+  <h1>Hai kamu 👀🤍</h1>
+  <h2>Ada sesuatu yang aku simpen…</h2>
+  <div class="dots">
+    <div class="dot active"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+  <button class="btn" onclick="next(1,event)">PENCET DONG 😆</button>
+</div>
+
+<!-- STEP 2 -->
+<div class="card" id="s2" style="display:none">
+  <h1>Hehehe 😚</h1>
+  <h2>Ini khusus buat kamu loh</h2>
+  <div class="dots">
+    <div class="dot active"></div><div class="dot active"></div><div class="dot"></div>
+  </div>
+  <button class="btn" onclick="next(2,event)">LANJUT 💕</button>
+</div>
+
+<!-- STEP 3 -->
+<div class="card" id="s3" style="display:none">
+  <h1>Siap yaa 🥹</h1>
+  <h2>Pelan-pelan dibacanya</h2>
+  <div class="dots">
+    <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div>
+  </div>
+  <button class="btn" onclick="openMsg(event)">BUKA PESAN 💌</button>
+</div>
+
+<!-- MESSAGE -->
+<div class="card message" id="msg"></div>
+
+<script>
+const text = `HALOO HALOO SAYANGGG 💗
+Selamat hari perempuan sedunia 🌸
+Cantikkkkkkk kuu, gemess kuu, semestaaa akuu 
+Lucuuu nyaa akuu, situkangg ngambekkk 😆
+Kamuu wanitaaaaaa terrcantikk setelahhh ibuu kuu 🥹
+Makasih yaa sudah bertahan sejauhh inii
+dan selalu dengerin keluh kesah akuu  🥰
+Kamuu ituu rumah ke 2 buatt akuu 🏠💕
+Dan akuu udahh nyamann bangett di rumah satuu inii
+Ada kamuu, galau itu ilang ✨
+Karena akuu bahagia banget sama kamuu 🥰
+
+I'm happy with you 💗
+You are a great woman 🤍🤍
+— Dari akuu yang paling sayang kamu 🧸💗`;
+
+function explode(x,y){
+  const emo=["💗","💥","🧸","✨","💕"];
+  for(let i=0;i<20;i++){
+    const b=document.createElement("div");
+    b.className="boom";
+    b.innerText=emo[Math.floor(Math.random()*emo.length)];
+    b.style.left=x+"px";
+    b.style.top=y+"px";
+    b.style.setProperty("--x",(Math.random()*400-200)+"px");
+    b.style.setProperty("--y",(Math.random()*400-200)+"px");
+    document.body.appendChild(b);
+    setTimeout(()=>b.remove(),1000);
+  }
+}
+
+function next(n,e){
+  explode(e.clientX,e.clientY);
+  document.getElementById("s"+n).style.display="none";
+  document.getElementById("s"+(n+1)).style.display="block";
+}
+
+function openMsg(e){
+  explode(e.clientX,e.clientY);
+  document.getElementById("s3").style.display="none";
+  const box=document.getElementById("msg");
+  box.style.display="block";
+  typeText(box,text);
+}
+
+function typeText(el,txt){
+  let i=0;
+  el.innerHTML="";
+  const cursor=document.createElement("span");
+  cursor.className="cursor";
+  el.appendChild(cursor);
+  const t=setInterval(()=>{
+    if(i<txt.length){
+      cursor.insertAdjacentText("beforebegin",txt[i]);
+      i++;
+    }else{
+      cursor.remove();
+      clearInterval(t);
+    }
+  },35);
+}
+</script>
+
+</body>
+  </html>
